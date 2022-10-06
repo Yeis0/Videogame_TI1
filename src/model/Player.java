@@ -3,7 +3,6 @@ package model;
 /**
  * This class represents a player in the game.
  * @author Yeison Antonio Rodriguez Zuluaga
- * @version 1.10.2022
  */
 public class Player {
 

@@ -1,5 +1,4 @@
 package ui;
-import java.net.StandardSocketOptions;
 import java.util.Scanner;
 import model.VideoGame;
 
@@ -7,7 +6,6 @@ import model.VideoGame;
  *  This class is the main class of the application.
  *  It creates a new instance of the videogame and allows the user to interact with it.
  * @author Yeison Antonio Rodriguez Zuluaga
- * @version 1.10.2022
  */
 public class VideoGameApp {
 
@@ -72,6 +70,7 @@ public class VideoGameApp {
                     vga.countConsonants();
                     break;
                 case(12):
+                    vga.topFive();
                     break;
                 case(13):
                     System.out.println("Thank you for using the app\nGoodbye...");
@@ -223,5 +222,10 @@ public class VideoGameApp {
 
     public void countConsonants(){
         System.out.println(vg.countConsonants());
+    }
+
+    public void topFive(){
+        System.out.println("if there are players with the same score, they will be shown in the order in which they were added");
+        System.out.println(vg.topFive());
     }
 }

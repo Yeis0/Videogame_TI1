@@ -3,7 +3,6 @@ package model;
 /**
  * This class represents an enemy in the game.<br>
  * @author Yeison Antonio Rodriguez Zuluaga
- * @version 1.10.2022
  */
 public class Enemy {
 

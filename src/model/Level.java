@@ -3,7 +3,6 @@ package model;
 /**
  * This class represents a level of the game<br>
  * @author Yeison Antonio Rodriguez Zuluaga
- * @version 1.10.2022
  */
 public class Level {
     private String name;
@@ -337,6 +336,21 @@ public class Level {
         return treasureNames;
     }
 
+    public int[] treasuresNameAmount(){
+        int amount=countTreasures();
+        int[] treasureAmount=new int[amount];
+        for (int i=0; i < treasures.length; i++) {
+            if (treasures[i]!=null){
+                for(int k = 0; k < treasureAmount.length; k++) {
+                    if (treasures[i].getName().equalsIgnoreCase(treasuresNames()[k])){
+                        treasureAmount[k]++;
+                    }
+                }
+            }
+        }
+        return treasureAmount;
+    }
+
     public Enemy biggestEnemy(){
         Enemy biggest = null;
         for (int i = 0; i < enemies.length; i++) {
@@ -360,6 +374,8 @@ public class Level {
         }
         return count;
     }
+
+
 
     /**
      * <b>Getter.</b>

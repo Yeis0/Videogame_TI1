@@ -4,7 +4,7 @@ import java.util.Random;
 /**
  * This class contains the information of the game, and is communicated with the user interface.
  * @author Yeison Antonio Rodriguez Zuluaga
- * @version 1.10.2022
+ *
  */
 public class VideoGame {
     /**
@@ -396,6 +396,61 @@ public class VideoGame {
             msg="There are "+count+" consonants in the enemies names";
         }
         return msg;
+    }
+
+    public String topFive(){
+        String msg="There are no players in the game";
+        Player[] topFive = new Player[5];
+         for (int i=0;i<players.length;i++){
+                if (players[i]!=null){
+                    if (topFive[0]==null){
+                        topFive[0]=players[i];
+                    }else{
+                        for (int j=0;j<topFive.length;j++){
+                            if (topFive[j]==null){
+                             topFive[j]=players[i];
+                             j=topFive.length;
+                            }else if (topFive[j].getScore()<players[i].getScore()){
+                             for (int k=topFive.length-1;k>j;k--){
+                                  topFive[k]=topFive[k-1];
+                             }
+                             topFive[j]=players[i];
+                             j=topFive.length;
+                            }
+                        }
+                    }
+                }
+          }
+
+        if (topFive[0]!=null){
+            msg="The top five players are:\n";
+            for (int i=0;i<topFive.length;i++){
+                if (topFive[i]!=null){
+                    msg+=topFive[i].getNickName()+" with "+topFive[i].getScore()+" points\n";
+                }
+            }
+        }
+        return msg;
+    }
+
+    public String mostCommonTreasure(){
+        String msg="There are no treasures in the game";
+        String[]names=new String [totalTreasures()];
+        int[]quantity=new int [totalTreasures()];
+
+
+
+        return msg;
+    }
+
+    public int totalTreasures(){
+        int total=0;
+        for(int i=0;i<levels.length-1;i++){
+            if (levels[i]!=null){
+                total+=levels[i].countTreasures();
+            }
+        }
+        return total;
     }
     
     /**

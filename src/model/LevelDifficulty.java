@@ -3,7 +3,6 @@ package model;
 /**
  * This enum represents the difficulty of the level.
  * @author Yeison Antonio Rodriguez Zuluaga
- * @version 1.10.2022
  */
 public enum LevelDifficulty {
     /**

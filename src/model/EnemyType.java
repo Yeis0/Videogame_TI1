@@ -2,8 +2,7 @@ package model;
 
 /**
  * This enum represents the type of the enemy.
- * @author Yeison Antonio Rodriguez Zuluaga
- * @version 1.10.2022
+ * @author Yeison Antonio Rodriguez Zuluaga.
  */
 public enum EnemyType {
     /**
