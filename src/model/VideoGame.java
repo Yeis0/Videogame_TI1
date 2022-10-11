@@ -309,6 +309,14 @@ public class VideoGame {
         return index;
     }
 
+    /**
+     * <b>enemiesAndTreasures</b><br>
+     * This method informs the user about the enemies and treasures that are in the level.<br>
+     * <b>Pre:</b> The level must exist.<br>
+     * <b>Post:</b> The information has been shown.<br>
+     * @param levelName The name of the level.
+     * @return A message that contains the information.
+     */
     public String enemiesAndTreasures(String levelName){
         String message="";
         Level obj = searchLevel(levelName);
@@ -320,6 +328,14 @@ public class VideoGame {
         return message;
     }
 
+    /**
+     * <b>treasureAmount</b><br>
+     * This method informs the user about the amount of an specific treasure in the game.<br>
+     * <b>Pre:</b> The treasure must exist.<br>
+     * <b>Post:</b> The information has been shown.<br>
+     * @param treasureName the name of the treasure.
+     * @return A message that contains the information.
+     */
     public String treasureAmount(String treasureName){
         int countTreasures=0;
         String message="This treasure doesn't exist";
@@ -334,6 +350,14 @@ public class VideoGame {
         return message;
     }
 
+    /**
+     * <b>totalEnemiesPerType</b><br>
+     * This method informs the user about the total amount of enemies per type.<br>
+     * <b>Pre:</b> The array of enemies must be initialized.<br>
+     * <b>Post:</b> The information has been shown.<br>
+     * @param type
+     * @return
+     */
     public String totalEnemiesPerType(int type){
         int countEnemies=0;
         String message="There are no enemies of this type";
@@ -349,18 +373,12 @@ public class VideoGame {
     }
 
     /**
-     *
+     * <b>biggestEnemy</b><br>
+     * This method informs the user about the enemy with the biggest score in the game.<br>
+     * <b>Pre:</b> The array of enemies must be initialized.<br>
+     * <b>Post:</b> The information has been shown.<br>
      * @return
      */
-    public String maximumTreasure(){
-        String msg="There are no treasures in the game";
-        int max=0;
-        for (int i=0;i<levels.length;i++){
-        }
-
-        return msg;
-    }
-
     public String biggestEnemy(){
         String message="There are no enemies in the game";
         int index=-1;
@@ -384,6 +402,13 @@ public class VideoGame {
         return message;
     }
 
+    /**
+     * <b>countConsonants</b><br>
+     * This method counts the consonants in the names of the enemies in the game.<br>
+     * <b>Pre:</b> The array of enemies must be initialized.<br>
+     * <b>Post:</b> The consonants have been counted.<br>
+     * @return
+     */
     public String countConsonants(){
         String msg="There are no consonants in the enemies names";
         int count=0;
@@ -398,6 +423,15 @@ public class VideoGame {
         return msg;
     }
 
+    /**
+     *<b>topFive</b><br>
+     *This method shows the five players with the highest score.<br>
+     *if there are less than five players, it shows all the players.<br>
+     *if there are players with the same score, it shows them in the orders they were added.<br>
+     * <b>Pre:</b> The array of players must be initialized.<br>
+     * <b>Post:</b> The players have been shown.<br>
+     * @return
+     */
     public String topFive(){
         String msg="There are no players in the game";
         Player[] topFive = new Player[5];
@@ -433,16 +467,64 @@ public class VideoGame {
         return msg;
     }
 
+    /**
+     * <b>mostCommonTreasure</b><br>
+     * This method shows the treasures that appear the most in the game.<br>
+     * <b>Pre:</b> The array of treasures must be initialized.<br>
+     * <b>Post:</b> The treasures have been shown.<br>
+     * @return
+     */
     public String mostCommonTreasure(){
         String msg="There are no treasures in the game";
-        String[]names=new String [totalTreasures()];
-        int[]quantity=new int [totalTreasures()];
+        String[] treasures = new String[totalTreasures()];
+        int[] count = new int[totalTreasures()];
+        int biggest=0;
+        String biggestName="";
+        for (int i=0;i<levels.length;i++){
+            if(levels[i]!=null){
+                String[] treasuresLevel = levels[i].treasuresNames();
+                int[] countTreasuresLevel = levels[i].treasuresNameAmount();
+                for (int j=0;j<treasuresLevel.length;j++){
+                    if (treasuresLevel[j]!=null){
+                        for (int k=0;k<treasures.length;k++){
+                            if (treasures[k]!=null&&treasures[k].equalsIgnoreCase(treasuresLevel[j])) {
+                                count[k] += countTreasuresLevel[j];
+                                k = treasures.length;
+                            }else if (treasures[k]==null){
+                                treasures[k]=treasuresLevel[j];
+                                count[k]=countTreasuresLevel[j];
+                                k=treasures.length;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
+        for (int i=0;i<treasures.length;i++){
+            if (treasures[i]!=null){
+                if (count[i]>biggest){
+                    biggest=count[i];
+                    biggestName=treasures[i];
+                }
 
+            }
+        }
+
+        if (biggestName!=""){
+            msg="The treasure that appears the most is "+biggestName+" with "+biggest+" times";
+        }
 
         return msg;
     }
 
+    /**
+     * <b>totalTreasures</b><br>
+     * This method counts the total amount of treasures in the game.<br>
+     * <b>Pre:</b> The array of treasures must be initialized.<br>
+     * <b>Post:</b> The treasures have been counted.<br>
+     * @return
+     */
     public int totalTreasures(){
         int total=0;
         for(int i=0;i<levels.length-1;i++){

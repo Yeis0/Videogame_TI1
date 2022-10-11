@@ -229,6 +229,13 @@ public class Level {
 
     }
 
+    /**
+     * <b>showEnemies</b>
+     * This method allows to show the enemies of the level.<br>
+     * <b>pre:</b>The array enemies must be initialized.<br>
+     * <b>post:</b>The enemies have been shown.<br>
+     * @return
+     */
     public String showEnemies(){
         String msg = "";
         int count = countEnemies();
@@ -252,6 +259,13 @@ public class Level {
         return msg;
     }
 
+    /**
+     * <b>countEnemies</b><br>
+     * This method allows to count the enemies of the level.<br>
+     * <b>pre:</b>The array enemies must be initialized.<br>
+     * <b>post:</b>The enemies have been counted.<br>
+     * @return
+     */
     public int countEnemies(){
         int count=0;
         for (int i = 0; i < enemies.length; i++) {
@@ -262,6 +276,13 @@ public class Level {
         return count;
     }
 
+    /**
+     * <b>showTreasures</b><br>
+     * This method allows to show the treasures of the level.<br>
+     * <b>pre:</b>The array treasures must be initialized.<br>
+     * <b>post:</b>A message with the name of the treasures in the level.
+     * @return
+     */
     public String showTreasures(){
         String msg = "";
         int count = countTreasures();
@@ -287,6 +308,13 @@ public class Level {
         return msg;
     }
 
+    /**
+     * <b>countTreasures</b><br>
+     * This method count the amount of treasures in a level.<br>
+     * <b>pre:</b>
+     * <b>Pos:</b>
+     * @return
+     */
     public int countTreasures(){
         int count=0;
         for (int i = 0; i < treasures.length; i++) {
@@ -297,6 +325,13 @@ public class Level {
         return count;
     }
 
+    /**
+     * <b>treasureAmount</b>
+     * <b>pre:</b>
+     * <b>pos:</b>
+     * @param name
+     * @return
+     */
     public int treasureAmount(String name){
         int count=0;
         for (int i = 0; i < treasures.length; i++) {
@@ -307,6 +342,14 @@ public class Level {
         return count;
     }
 
+    /**
+     * <b>totalEnemiesPerType.</b><br>
+     * This method counts the amount of enemies of an especific type.<br>
+     * <b>pre:</b>
+     * <b>pos:</b>
+     * @param type
+     * @return
+     */
     public int totalEnemiesPerType(int type){
         int count=0;
         for (int i = 0; i < enemies.length; i++) {
@@ -318,6 +361,14 @@ public class Level {
         return count;
     }
 
+    /**
+     * <b>treasuresNames</b><br>
+     * This method creates a array that contains the names of the treasure in the level.<br>
+     * if a treasures appears more than a time in the level, it's name just gonna appears once in the array.
+     * <b>pre:</b>
+     * <b>pos:</b>
+     * @return
+     */
     public String[] treasuresNames(){
         int amount=countTreasures();
         String[] treasureNames=new String[amount];
@@ -336,6 +387,13 @@ public class Level {
         return treasureNames;
     }
 
+    /**
+     * <b>treasuresNameAmount</b><br>
+     * This method creates a array that contains the amount of the names of the treasures in the level.<br>
+     * <b>pre:</b>
+     * <b>pos:</b>
+     * @return
+     */
     public int[] treasuresNameAmount(){
         int amount=countTreasures();
         int[] treasureAmount=new int[amount];
@@ -351,6 +409,13 @@ public class Level {
         return treasureAmount;
     }
 
+    /**
+     * <b>biggestEnemy</b><br>
+     * This method find the enemy with the highest score in the level.<br>
+     * <b>pre:</b>
+     * <b>pos:</b>
+     * @return
+     */
     public Enemy biggestEnemy(){
         Enemy biggest = null;
         for (int i = 0; i < enemies.length; i++) {
@@ -365,6 +430,11 @@ public class Level {
         return biggest;
     }
 
+    /**
+     * <b>countEnemyConsonants</b><br>
+     * This method count the consonants in the names of all enemies in the level.<br>
+     * @return
+     */
     public int countEnemyConsonants(){
         int count=0;
         for (int i = 0; i < enemies.length; i++) {
@@ -374,8 +444,6 @@ public class Level {
         }
         return count;
     }
-
-
 
     /**
      * <b>Getter.</b>

@@ -48,6 +48,11 @@ public class Enemy {
         this.positionY = positionY;
     }
 
+    /**
+     * <b>calculateEnemyType</b><br>
+     * This method return the type of an enemy converted to a integer.<br>
+     * @return The type of the enemy converted to a integer.
+     */
     public int calculateEnemyType() {
         switch (type) {
             case OGRE:
@@ -62,6 +67,11 @@ public class Enemy {
         return 0;
     }
 
+    /**
+     * <b>calculateConsonants</b><br>
+     * This method calculate the number of consonants in the name of an enemy.<br>
+     * @return
+     */
     public int calculateConsonants() {
         int consonants=0;
         for(int i=0; i<name.length(); i++) {

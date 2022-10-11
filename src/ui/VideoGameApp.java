@@ -62,6 +62,7 @@ public class VideoGameApp {
                     vga.showEnemiesPerType();
                     break;
                 case(9):
+                    vga.mostCommonTreasure();
                     break;
                 case(10):
                     vga.biggestEnemy();
@@ -187,6 +188,10 @@ public class VideoGameApp {
         System.out.println(message);
     }
 
+    /**
+     * <b>showTreasuresAndEnemies</b><br>
+     * This method allows the user to see the treasures and enemies of a level.
+     */
     public void showTreasuresAndEnemies(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the level in which the treasures and enemies will be shown");
@@ -195,6 +200,10 @@ public class VideoGameApp {
         System.out.println(message);
     }
 
+    /**
+     * <b>showTreasuresQuantity</b><br>
+     * This method allows the user to see the amount of treasures of a level.
+     */
     public void showTreasuresQuantity(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the name of the treasure");
@@ -203,6 +212,10 @@ public class VideoGameApp {
         System.out.println(message);
     }
 
+    /**
+     * <b>showEnemiesPerType</b><br>
+     * This method allows the user to see the amount of enemies of a type.
+     */
     public void showEnemiesPerType(){
 
         int type;
@@ -216,16 +229,37 @@ public class VideoGameApp {
         }while (type < 1 || type > 4);
         System.out.println(vg.totalEnemiesPerType(type));
     }
+
+    /**
+     * <b>biggestEnemy</b><br>
+     * This method allows the user to see the biggest enemy of a level.
+     */
     public void biggestEnemy(){
         System.out.println(vg.biggestEnemy());
     }
 
+    /**
+     * <b>countConsonants</b><br>
+     * This method allows the user to see the amount of consonants in the name of all the enemies.
+     */
     public void countConsonants(){
         System.out.println(vg.countConsonants());
     }
 
+    /**
+     *<b>topFive</b><br>
+     * This method shows the top five players of the game.
+     */
     public void topFive(){
         System.out.println("if there are players with the same score, they will be shown in the order in which they were added");
         System.out.println(vg.topFive());
+    }
+
+    /**
+     * <b>mostCommonTreasure</b><br>
+     * This method shows the most common treasure of the game.
+     */
+    public void mostCommonTreasure(){
+        System.out.println(vg.mostCommonTreasure());
     }
 }
