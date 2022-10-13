@@ -34,10 +34,10 @@ public class VideoGameApp {
         int option;
         do{
             System.out.println("1. Create a new player\n2. Create a new enemy and assign it to a level");
-            System.out.println("3. Create a new treasure and assign it to a level\n4. Modify the score af a player\n5. increase the level of a player\n6.Show the treasures and enemies of a level");
-            System.out.println("7.Show the quantity of an especific treasure in all levels\n8.Show the quantity of an especific enemy type in all levels\n9.Show the name of the most common treasure in all levels");
-            System.out.println("10.Show the enemy with the highest score and its level\n11.Show the quantity of consonants in the name of all the enemies\n12.Show a top 5 of the players with the highest score");
-            System.out.println("13.Exit");
+            System.out.println("3. Create a new treasure and assign it to a level\n4. Modify the score af a player\n5. increase the level of a player\n6. Show the treasures and enemies of a level");
+            System.out.println("7. Show the quantity of an especific treasure in all levels\n8. Show the quantity of an especific enemy type in all levels\n9. Show the name of the most common treasure in all levels");
+            System.out.println("10. Show the enemy with the highest score and its level\n11. Show the quantity of consonants in the name of all the enemies\n12. Show a top 5 of the players with the highest score");
+            System.out.println("13. Exit");
             System.out.println("Type a number to select an option");
             option = sc.nextInt();
             switch(option){  
