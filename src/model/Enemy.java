@@ -51,6 +51,8 @@ public class Enemy {
     /**
      * <b>calculateEnemyType</b><br>
      * This method return the type of an enemy converted to a integer.<br>
+     * <b>pre:</b> The enemy must be initialized.<br>
+     * <b>post:</b> The type of the enemy has been returned as an integer.<br>
      * @return The type of the enemy converted to a integer.
      */
     public int calculateEnemyType() {
@@ -70,7 +72,9 @@ public class Enemy {
     /**
      * <b>calculateConsonants</b><br>
      * This method calculate the number of consonants in the name of an enemy.<br>
-     * @return
+     * <b>pre:</b> The enemy must be initialized.<br>
+     * <b>post:</b> The number of consonants in the name of the enemy has been returned.<br>
+     * @return the quantity of the consonant in the name of the enemy.
      */
     public int calculateConsonants() {
         int consonants=0;

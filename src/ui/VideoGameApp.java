@@ -16,13 +16,17 @@ public class VideoGameApp {
     
     private VideoGame vg;
 
+    /**
+     * <b>Constructor.</b><br>
+     * This method is the constructor of the class VideoGameApp.
+     */
     public VideoGameApp() {
         System.out.println("Welcome to the video game!\nplease,enter the name of the game:");
         String name = sc.nextLine();
         vg = new VideoGame(name);
     }
     /**
-     *This is the main method of the application.<br>
+     *This is the main method of the application it allows the execution of the program.<br>
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -85,10 +89,9 @@ public class VideoGameApp {
 
     /**
      * <b>addPlayer</b><br>
-     * This method allows the user to create a new player.
+     * This method read the data of a player and informs about it's creation.<br>
      */
     public  void addPlayer(){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the name of the player");
         String name = sc.nextLine();
         System.out.println("Please enter the nickname of the player");
@@ -99,10 +102,9 @@ public class VideoGameApp {
 
     /**
      * <b>addEnemy</b><br>
-     * This method allows the user to create a new enemy and assign it to a level.
+     * This method ask the information of an enemy and informs about it's addition.<br>
      */
     public void addEnemy(){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the name of the enemy");
         String name = sc.nextLine();
         System.out.println("Please enter a number to select the type of the enemy");
@@ -128,10 +130,9 @@ public class VideoGameApp {
 
     /**
      * <b>addTreasure</b><br>
-     * This method allows the user to create a new treasure and assign it to a level.
+     * This method ask the information of a treasure and informs about it's addition.<br>
      */
     public void addTreasure(){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the name of the treasure");
         String name = sc.nextLine();
         System.out.println("Please enter the URL of the image of the treasure");
@@ -161,19 +162,24 @@ public class VideoGameApp {
      */
     public void changePlayerScore(){
         int score=0;
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter the nickname of the player");
-        String nickName = sc.nextLine();
-        do{
-            System.out.println("Please enter the new score of the player");
-            score = sc.nextInt();
-            if (score<0){
-                System.out.println("The score can't be negative");
-            }
-        }while(score<0);
+        String msg;
 
-        String message = vg.ChangePlayerScore(nickName, score);
-        System.out.println(message);
+        do{
+            System.out.println("Please enter the nickname of the player");
+            String nickName = sc.nextLine();
+            System.out.println("Please enter the new score of the player");
+            System.out.println("The new score must be bigger than the current score");
+            score = sc.nextInt();
+            sc.nextLine();
+            msg= vg.changePlayerScore(nickName, score);
+            System.out.println(msg);
+            if(!msg.equals("Score changed succesfully!")){
+            System.out.println("Please enter valid data");
+
+            }
+        }while(!msg.equals("Score changed succesfully!"));
+
+
     }
 
     /**
@@ -181,7 +187,6 @@ public class VideoGameApp {
      * This method allows the user to increase the level of a player.
      */
     public void changePlayerLevel(){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the nickname of the player");
         String nickName = sc.nextLine();
         String message = vg.changePlayerLevel(nickName);
@@ -193,7 +198,6 @@ public class VideoGameApp {
      * This method allows the user to see the treasures and enemies of a level.
      */
     public void showTreasuresAndEnemies(){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the level in which the treasures and enemies will be shown");
         String level = sc.nextLine();
         String message = vg.enemiesAndTreasures(level);
@@ -205,7 +209,6 @@ public class VideoGameApp {
      * This method allows the user to see the amount of treasures of a level.
      */
     public void showTreasuresQuantity(){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Please enter the name of the treasure");
         String name = sc.nextLine();
         String message = vg.treasureAmount(name);
@@ -248,16 +251,16 @@ public class VideoGameApp {
 
     /**
      *<b>topFive</b><br>
-     * This method shows the top five players of the game.
+     * This method shows the top five players in the game.
      */
     public void topFive(){
-        System.out.println("if there are players with the same score, they will be shown in the order in which they were added");
+        System.out.println("The players with the same score will be show in adder order");
         System.out.println(vg.topFive());
     }
 
     /**
      * <b>mostCommonTreasure</b><br>
-     * This method shows the most common treasure of the game.
+     * This method shows the most common treasure in the game.
      */
     public void mostCommonTreasure(){
         System.out.println(vg.mostCommonTreasure());

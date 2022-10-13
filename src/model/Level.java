@@ -56,6 +56,7 @@ public class Level {
                     if (enemies[i]==null){
                         enemies[i]=obj;
                         added=true;
+                        calculateDifficulty();
                     }
                 }
             }else{
@@ -96,7 +97,7 @@ public class Level {
      */
     public boolean isAvailableEnemy(){
         boolean available = false;
-        for (int i = 0; i < enemies.length; i++) {
+        for (int i = 0; i < enemies.length&&!available; i++) {
             if (enemies[i]==null){
                 available = true;
             }
@@ -124,6 +125,7 @@ public class Level {
             if (treasures[i]==null){
                     treasures[i]=obj;
                     added=true;
+                    calculateDifficulty();
             }
         }
               
@@ -234,7 +236,7 @@ public class Level {
      * This method allows to show the enemies of the level.<br>
      * <b>pre:</b>The array enemies must be initialized.<br>
      * <b>post:</b>The enemies have been shown.<br>
-     * @return
+     * @return A message that indicates the enemies of the level.
      */
     public String showEnemies(){
         String msg = "";
@@ -264,7 +266,7 @@ public class Level {
      * This method allows to count the enemies of the level.<br>
      * <b>pre:</b>The array enemies must be initialized.<br>
      * <b>post:</b>The enemies have been counted.<br>
-     * @return
+     * @return The amount of enemies in the level.
      */
     public int countEnemies(){
         int count=0;
@@ -281,7 +283,7 @@ public class Level {
      * This method allows to show the treasures of the level.<br>
      * <b>pre:</b>The array treasures must be initialized.<br>
      * <b>post:</b>A message with the name of the treasures in the level.
-     * @return
+     * @return A message that indicates the treasures of the level.
      */
     public String showTreasures(){
         String msg = "";
@@ -311,9 +313,9 @@ public class Level {
     /**
      * <b>countTreasures</b><br>
      * This method count the amount of treasures in a level.<br>
-     * <b>pre:</b>
-     * <b>Pos:</b>
-     * @return
+     * <b>pre:</b> The array treasures must be initialized.<br>
+     * <b>Pos:</b> The amount of treasures has been counted.<br>
+     * @return The amount of treasures in the level.
      */
     public int countTreasures(){
         int count=0;
@@ -327,10 +329,11 @@ public class Level {
 
     /**
      * <b>treasureAmount</b>
-     * <b>pre:</b>
-     * <b>pos:</b>
-     * @param name
-     * @return
+     * This method allows to know the amount of an especific treasure in the level.<br>
+     * <b>pre:</b> The array treasures must be initialized.<br>
+     * <b>pos:</b> The amount of the specified treasure have been returned.<br>
+     * @param name The name of the treasure to be counted.
+     * @return The amount of the specified treasure in the level.
      */
     public int treasureAmount(String name){
         int count=0;
@@ -345,10 +348,10 @@ public class Level {
     /**
      * <b>totalEnemiesPerType.</b><br>
      * This method counts the amount of enemies of an especific type.<br>
-     * <b>pre:</b>
-     * <b>pos:</b>
-     * @param type
-     * @return
+     * <b>pre:</b> The array enemies must be initialized.<br>
+     * <b>pos:</b> The amount of the specified enemy type has been counted.<br>
+     * @param type The type of the enemy to be counted.
+     * @return The amount of the specified enemy type in the level.
      */
     public int totalEnemiesPerType(int type){
         int count=0;
@@ -364,10 +367,10 @@ public class Level {
     /**
      * <b>treasuresNames</b><br>
      * This method creates a array that contains the names of the treasure in the level.<br>
-     * if a treasures appears more than a time in the level, it's name just gonna appears once in the array.
-     * <b>pre:</b>
-     * <b>pos:</b>
-     * @return
+     * if a treasures appears more than a time in the level, it's name just gonna appears once in the array.<br>
+     * <b>pre:</b> The array treasures must be initialized.<br>
+     * <b>pos:</b> The array with the names of the treasures has been created.<br>
+     * @return An array with the names of the treasures in the level.
      */
     public String[] treasuresNames(){
         int amount=countTreasures();
@@ -390,9 +393,9 @@ public class Level {
     /**
      * <b>treasuresNameAmount</b><br>
      * This method creates a array that contains the amount of the names of the treasures in the level.<br>
-     * <b>pre:</b>
-     * <b>pos:</b>
-     * @return
+     * <b>pre:</b> The array treasures must be initialized.<br>
+     * <b>pos:</b> The array with the amount of the names of the treasures has been created.<br>
+     * @return An array with the amount of the names of  treasures in the level.
      */
     public int[] treasuresNameAmount(){
         int amount=countTreasures();
@@ -412,9 +415,9 @@ public class Level {
     /**
      * <b>biggestEnemy</b><br>
      * This method find the enemy with the highest score in the level.<br>
-     * <b>pre:</b>
-     * <b>pos:</b>
-     * @return
+     * <b>pre:</b> The array enemies must be initialized.<br>
+     * <b>pos:</b> The enemy with the highest score has been found.<br>
+     * @return The enemy with the highest score in the level.
      */
     public Enemy biggestEnemy(){
         Enemy biggest = null;
@@ -433,7 +436,9 @@ public class Level {
     /**
      * <b>countEnemyConsonants</b><br>
      * This method count the consonants in the names of all enemies in the level.<br>
-     * @return
+     * <b>pre:</b> The array enemies must be initialized.<br>
+     * <b>pos:</b> The consonants in the names of all enemies in the level has been counted.<br>
+     * @return The consonants in the names of all enemies in the level.
      */
     public int countEnemyConsonants(){
         int count=0;

@@ -238,12 +238,16 @@ public class VideoGame {
      * @param score The new score that will be added to the player.
      * @return A message that indicates if the score was added or not.
      */
-    public String ChangePlayerScore(String nickName, int score){
-        String message = "Score changed succesfully";
+    public String changePlayerScore(String nickName, int score){
+        String message = "Score changed succesfully!";
 
         Player obj = searchPlayer(nickName);
         if (obj!=null){
-            obj.setScore(score);
+            if(obj.getScore()<=score){
+                obj.setScore(score);
+            }else {
+                message = "The score is not valid";
+            }
         }else{
             message = "The player doesn't exist";
         }
@@ -355,8 +359,8 @@ public class VideoGame {
      * This method informs the user about the total amount of enemies per type.<br>
      * <b>Pre:</b> The array of enemies must be initialized.<br>
      * <b>Post:</b> The information has been shown.<br>
-     * @param type
-     * @return
+     * @param type The type of the enemy that will be counted.
+     * @return A message that contains the information of the amount of an especific enemy type.
      */
     public String totalEnemiesPerType(int type){
         int countEnemies=0;
@@ -377,7 +381,7 @@ public class VideoGame {
      * This method informs the user about the enemy with the biggest score in the game.<br>
      * <b>Pre:</b> The array of enemies must be initialized.<br>
      * <b>Post:</b> The information has been shown.<br>
-     * @return
+     * @return A message that contains the information of the enemy with the biggest score.
      */
     public String biggestEnemy(){
         String message="There are no enemies in the game";
@@ -407,7 +411,7 @@ public class VideoGame {
      * This method counts the consonants in the names of the enemies in the game.<br>
      * <b>Pre:</b> The array of enemies must be initialized.<br>
      * <b>Post:</b> The consonants have been counted.<br>
-     * @return
+     * @return A message that contains the information of the consonants counted.
      */
     public String countConsonants(){
         String msg="There are no consonants in the enemies names";
@@ -430,37 +434,37 @@ public class VideoGame {
      *if there are players with the same score, it shows them in the orders they were added.<br>
      * <b>Pre:</b> The array of players must be initialized.<br>
      * <b>Post:</b> The players have been shown.<br>
-     * @return
+     * @return A message that contains the information of the players in the Five top.
      */
     public String topFive(){
         String msg="There are no players in the game";
         Player[] topFive = new Player[5];
-         for (int i=0;i<players.length;i++){
-                if (players[i]!=null){
-                    if (topFive[0]==null){
-                        topFive[0]=players[i];
-                    }else{
-                        for (int j=0;j<topFive.length;j++){
-                            if (topFive[j]==null){
-                             topFive[j]=players[i];
-                             j=topFive.length;
-                            }else if (topFive[j].getScore()<players[i].getScore()){
-                             for (int k=topFive.length-1;k>j;k--){
-                                  topFive[k]=topFive[k-1];
-                             }
-                             topFive[j]=players[i];
-                             j=topFive.length;
+        for (int i=0;i<players.length;i++){
+            if (players[i]!=null){
+                if (topFive[0]==null){
+                    topFive[0]=players[i];
+                }else{
+                    for (int j=0;j<topFive.length;j++) {
+                        if (topFive[j]==null){
+                            topFive[j]=players[i];
+                            j=topFive.length;
+                        }else if (topFive[j].getScore()<players[i].getScore()){
+                            for (int k=topFive.length-1;k>j;k--){
+                                topFive[k]=topFive[k-1];
                             }
+                            topFive[j]=players[i];
+                            j=topFive.length;
                         }
                     }
                 }
-          }
+            }
+        }
 
         if (topFive[0]!=null){
-            msg="The top five players are:\n";
+            msg="The top five players are:\n ";
             for (int i=0;i<topFive.length;i++){
                 if (topFive[i]!=null){
-                    msg+=topFive[i].getNickName()+" with "+topFive[i].getScore()+" points\n";
+                    msg+=i+1 + ". "+topFive[i].getNickName()+" with "+topFive[i].getScore()+" points.\n ";
                 }
             }
         }
@@ -471,8 +475,8 @@ public class VideoGame {
      * <b>mostCommonTreasure</b><br>
      * This method shows the treasures that appear the most in the game.<br>
      * <b>Pre:</b> The array of treasures must be initialized.<br>
-     * <b>Post:</b> The treasures have been shown.<br>
-     * @return
+     * <b>Post:</b> The most common treasurehave been shown.<br>
+     * @return The treasure most common in the whole game.
      */
     public String mostCommonTreasure(){
         String msg="There are no treasures in the game";
@@ -523,7 +527,7 @@ public class VideoGame {
      * This method counts the total amount of treasures in the game.<br>
      * <b>Pre:</b> The array of treasures must be initialized.<br>
      * <b>Post:</b> The treasures have been counted.<br>
-     * @return
+     * @return The total amount of treasures in the game.
      */
     public int totalTreasures(){
         int total=0;
@@ -586,7 +590,7 @@ public class VideoGame {
      * <b>Setter.</b><br>
      * @param screenResolutionX The new resolution of the screen in the x-axis.
      */
-    public void setResolutionX(int screenResolutionX){
+    public void setScreenResolutionX(int screenResolutionX){
         this.screenResolutionX = screenResolutionX;
     }
     
@@ -594,7 +598,7 @@ public class VideoGame {
      * <b>Setter.</b><br>
      * @param screenResolutionY The new resolution of the screen in the y-axis.
      */
-    public void setResolutionY(int screenResolutionY){
+    public void setScreenResolutionY(int screenResolutionY){
         this.screenResolutionY = screenResolutionY;
     }
 
