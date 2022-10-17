@@ -243,13 +243,6 @@ public class Level {
         int count = countEnemies();
         if (count==0) {
             msg = "There are no enemies in this level";
-        }else if(count==1) {
-            msg = "There is 1 enemy in this level";
-            for (int i = 0; i < enemies.length; i++) {
-                if (enemies[i]!=null){
-                    msg += enemies[i].getName();
-                }
-            }
         }else{
             msg = "Enemies in this level:\n";
             for (int i = 0; i < enemies.length; i++) {
@@ -257,6 +250,7 @@ public class Level {
                     msg += enemies[i].getName()+", ";
                 }
             }
+            msg=msg.substring(0, msg.length()-2)+".";
         }
         return msg;
     }
@@ -291,13 +285,6 @@ public class Level {
         String[] names = treasuresNames();
         if (count==0) {
             msg = "There are no treasures in this level";
-        }else if(count==1) {
-            msg = "There is 1 treasure in this level:\n";
-            for (int i = 0; i < treasures.length; i++) {
-                if (treasures[i]!=null){
-                    msg += treasures[i].getName();
-                }
-            }
         }else{
             msg = "Treasures in this level:\n";
             for (int i = 0; i < names.length; i++) {

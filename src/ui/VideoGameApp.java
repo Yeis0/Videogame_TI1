@@ -43,6 +43,7 @@ public class VideoGameApp {
      */
     public static void main(String[] args) {
         VideoGameApp vga = new VideoGameApp();
+        System.out.println("The video game has been created successfully!");
         int option;
         do{
             System.out.println("\n-------------------------------------------------\nMenu:\n1. Create a new player\n2. Create a new enemy and assign it to a level");
@@ -168,7 +169,7 @@ public class VideoGameApp {
         sc.nextLine();
         System.out.println("Please enter the level in which the treasure will be added");
         String level = sc.nextLine();
-        System.out.println("Please enter the amount of treasures that will be added to the level, if you want to add only one treasure, please enter 1");
+        System.out.println("Please enter the amount of treasures that will be added to the level.");
         System.out.println("please do not enter numbers smaller than 1");
         int amount;
         do{

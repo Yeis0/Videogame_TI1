@@ -107,6 +107,7 @@ public class VideoGame {
     /**
      * <b>searchPlayer</b><br>
      * This method searches a player in the array of players.<br>
+     * Assume that the nickname is unique for each player which includes the capital letters used that´s why it is compared using equals instead equalsIgnoreCase.<br>
      * <b>Pre:</b> The array players must be initialized. The parameter must be initialized.<br>
      * <b>Post:</b> The player has been searched.<br>
      * @param nickName The nickname of the player.
@@ -404,14 +405,18 @@ public class VideoGame {
         Enemy enemy=null;
         for(int i=0;i<levels.length;i++){
             if(levels[i]!=null){
-                 if (enemy==null){
-                     enemy=levels[i].biggestEnemy();
-                 }else if(levels[i].biggestEnemy()!=null){
-                     if(levels[i].biggestEnemy().getAddedScore()>enemy.getAddedScore()){
-                         enemy=levels[i].biggestEnemy();
-                         index=i;
-                     }
-                 }
+                 
+                if (enemy==null){
+                     
+                    enemy=levels[i].biggestEnemy();
+                 
+                }else if(levels[i].biggestEnemy()!=null){
+                     
+                    if(levels[i].biggestEnemy().getAddedScore()>enemy.getAddedScore()){
+                        enemy=levels[i].biggestEnemy();
+                        index=i;
+                    }
+                }
             }
 
         }
