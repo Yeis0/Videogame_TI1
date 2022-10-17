@@ -213,7 +213,7 @@ public class Level {
     }
 
     /**
-     * <b>sumEnemies</b><br>
+     * <b>calculateDifficulty</b><br>
      * This method determine the difficulty of the level based in the score of it's enemies and treasures.<br>
      * <b>pre:</b>The array enemies and treasures must be initialized.<br>
      * <b>post:</b>The difficulty of the level has been determined.<br>

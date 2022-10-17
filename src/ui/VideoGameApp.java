@@ -23,7 +23,19 @@ public class VideoGameApp {
     public VideoGameApp() {
         System.out.println("Welcome to the video game!\nplease,enter the name of the game:");
         String name = sc.nextLine();
-        vg = new VideoGame(name);
+
+        int resolution;
+        do{
+            System.out.println("Please, enter the resolution of the game:\n1. SD(640,480)\n2. QHD1(960,540)\n3. HD(1280,720)\n4. FHD(1920,1080)\n5. QHD2(2560,1440)\n6. UHD(3840,2160)");
+            resolution = sc.nextInt();
+
+            if(resolution < 1 || resolution > 6){
+                System.out.println("The resolution is not valid, please try again.");
+            }
+
+        }while(resolution<1 || resolution>6);
+
+        vg = new VideoGame(name,resolution);
     }
     /**
      *This is the main method of the application it allows the execution of the program.<br>
@@ -33,57 +45,71 @@ public class VideoGameApp {
         VideoGameApp vga = new VideoGameApp();
         int option;
         do{
-            System.out.println("1. Create a new player\n2. Create a new enemy and assign it to a level");
+            System.out.println("\n-------------------------------------------------\nMenu:\n1. Create a new player\n2. Create a new enemy and assign it to a level");
             System.out.println("3. Create a new treasure and assign it to a level\n4. Modify the score af a player\n5. increase the level of a player\n6. Show the treasures and enemies of a level");
             System.out.println("7. Show the quantity of an especific treasure in all levels\n8. Show the quantity of an especific enemy type in all levels\n9. Show the name of the most common treasure in all levels");
             System.out.println("10. Show the enemy with the highest score and its level\n11. Show the quantity of consonants in the name of all the enemies\n12. Show a top 5 of the players with the highest score");
-            System.out.println("13. Exit");
-            System.out.println("Type a number to select an option");
+            System.out.println("13. Exit\n-------------------------------------------------");
+            System.out.println("Type a number to select an option:");
             option = sc.nextInt();
+            sc.nextLine();
             switch(option){  
                 case(1):
+                    System.out.println("-add a new player-");
                     vga.addPlayer();
                     break;
                 case(2):
+                    System.out.println("-add a new enemy-");
                     vga.addEnemy();
                     break;
                 case(3):
+                    System.out.println("-add a new treasure-");
                     vga.addTreasure();
                     break;
                 case(4):
+                    System.out.println("-modify the score of a player-");
                     vga.changePlayerScore();
                     break;
                 case(5):
+                    System.out.println("-increase the level of a player-");
                     vga.changePlayerLevel();
                     break;
                 case(6):
+                    System.out.println("-show the treasures and enemies of a level-");
                     vga.showTreasuresAndEnemies();
                     break;
                 case(7):
+                    System.out.println("-show the quantity of an especific treasure in all levels-");
                     vga.showTreasuresQuantity();
                     break;
                 case(8):
+                    System.out.println("-show the quantity of an especific enemy type in all levels-");
                     vga.showEnemiesPerType();
                     break;
                 case(9):
+                    System.out.println("-show the name of the most common treasure in all levels-");
                     vga.mostCommonTreasure();
                     break;
                 case(10):
+                    System.out.println("-show the enemy with the highest score and its level-");
                     vga.biggestEnemy();
                     break;
                 case(11):
+                    System.out.println("-show the quantity of consonants in the name of all the enemies-");
                     vga.countConsonants();
                     break;
                 case(12):
+                    System.out.println("-show a top 5 of the players with the highest score-");
                     vga.topFive();
                     break;
                 case(13):
                     System.out.println("Thank you for using the app\nGoodbye...");
                     break;
                 default:
-                    System.out.println("Please enter a valid option\n");
+                    System.out.println("\nPlease enter a valid option\n");
                     break;
-        }
+            }
+            
         }while(option != 13);
     }
 

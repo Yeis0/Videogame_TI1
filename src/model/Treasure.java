@@ -121,7 +121,6 @@ public class Treasure {
         this.positionY = positionY;
     }
 
-    
     /**
      * <b>toString</b><br>
      * This method returns the information of the treasure.

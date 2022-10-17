@@ -13,11 +13,10 @@ public class VideoGame {
     public static Random random = new Random();
 
     private String name;
-    private int screenResolutionX;
-    private int screenResolutionY;
 
     private Level[] levels;
     private Player[] players;
+    private Resolution resolution;
 
     /**
      * <b>Constructor</b><br>
@@ -25,13 +24,34 @@ public class VideoGame {
      * <b>Pre:</b> The parameters must be initialized.<br>
      * <b>Post:</b> A new object of the class VideoGame has been created.<br>
      * @param name The name of the game.
+     * @param res A number that represents the resolution of the game selected by the user.
      */
-    public VideoGame(String name){
+    public VideoGame(String name,int res){
+        
+        switch(res){
+            case 1:
+                resolution = Resolution.SD;
+                break;
+            case 2:
+                resolution = Resolution.QHD1;
+                break;
+            case 3:
+                resolution = Resolution.HD;
+                break;
+            case 4:
+                resolution = Resolution.FHD;
+                break;
+            case 5:
+                resolution = Resolution.QHD2;
+                break;
+            case 6:
+                resolution = Resolution.UHD;
+                break;
+        }
+
         this.name = name;
         levels= new Level[10];
         players = new Player[20];
-        screenResolutionX = 1280;
-        screenResolutionY = 700;
         fillLevels();
     }
 
@@ -45,15 +65,10 @@ public class VideoGame {
         int score=11;
         int level=1;
         for(int i = 0; i < levels.length; i++){
-            if(i<levels.length-1){
-                levels[i] = new Level(String.valueOf(level),score);
-                score*=2;
-                level++;
-            }else if (i==levels.length-1){
-                score=Integer.MAX_VALUE;
-                levels[i] = new Level(String.valueOf(level),score);
-            }  
-        }
+            levels[i] = new Level(String.valueOf(level),score);
+            score*=2;
+            level++;
+        }        
     } 
     
     /**
@@ -160,8 +175,8 @@ public class VideoGame {
      */
     public String addEnemy(String name, int typeNumber, int subtractedScore, int addedScore, String levelName){
         String message="";
-        int posx = generatePosition(screenResolutionX);
-        int posy = generatePosition(screenResolutionY);
+        int posx = generatePosition(resolution.getWidth());
+        int posy = generatePosition(resolution.getHeight());
         Level obj = searchLevel(levelName);
         if (obj!=null){
             message = obj.addEnemy(name, typeNumber, subtractedScore, addedScore, posx, posy);
@@ -213,8 +228,8 @@ public class VideoGame {
             boolean added = obj.isAvailableAmount(treasureAmount);
             if (added){
                 do{
-                    int posx = generatePosition(screenResolutionX);
-                    int posy = generatePosition(screenResolutionY);
+                    int posx = generatePosition(resolution.getWidth());
+                    int posy = generatePosition(resolution.getHeight());
                     message = obj.addTreasure(name, url, addedScore, posx, posy);
                     treasureAmount--;
                 }while(treasureAmount>0);
@@ -444,16 +459,17 @@ public class VideoGame {
                 if (topFive[0]==null){
                     topFive[0]=players[i];
                 }else{
-                    for (int j=0;j<topFive.length;j++) {
+                    boolean found = false;
+                    for (int j=0;j<topFive.length&&!found;j++) {
                         if (topFive[j]==null){
                             topFive[j]=players[i];
-                            j=topFive.length;
+                            found=true;
                         }else if (topFive[j].getScore()<players[i].getScore()){
                             for (int k=topFive.length-1;k>j;k--){
                                 topFive[k]=topFive[k-1];
                             }
                             topFive[j]=players[i];
-                            j=topFive.length;
+                            found=true; 
                         }
                     }
                 }
@@ -548,18 +564,10 @@ public class VideoGame {
     }
 
     /** <b>Getter.</b><br>
-     * @return The resolution of the screen in the x-axis.
+     * @return The resolution of the screen
      */
-    public int getScreenResolutionX(){
-        return screenResolutionX;
-    }
-
-    /**
-     * <b>Getter.</b><br>
-     * @return The resolution of the screen in the y-axis.
-     */
-    public int getScreenResolutionY(){
-        return screenResolutionY;
+    public Resolution getResolution(){
+        return resolution;
     }
     
     /**
@@ -585,22 +593,6 @@ public class VideoGame {
     public void setName(String name){
         this.name = name;
     }
-    
-    /**
-     * <b>Setter.</b><br>
-     * @param screenResolutionX The new resolution of the screen in the x-axis.
-     */
-    public void setScreenResolutionX(int screenResolutionX){
-        this.screenResolutionX = screenResolutionX;
-    }
-    
-    /**
-     * <b>Setter.</b><br>
-     * @param screenResolutionY The new resolution of the screen in the y-axis.
-     */
-    public void setScreenResolutionY(int screenResolutionY){
-        this.screenResolutionY = screenResolutionY;
-    }
 
     /**
      * <b>Setter.</b><br>
@@ -624,7 +616,7 @@ public class VideoGame {
      * @return A message with the information of the game.
      */
     public String toString(){
-        return "Name: "+name+"\nResolution: "+screenResolutionX+"x"+screenResolutionY;
+        return "Name: "+name+"\nResolution: "+resolution;
     }
       
 }
