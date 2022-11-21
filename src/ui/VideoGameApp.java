@@ -28,7 +28,7 @@ public class VideoGameApp {
         do{
             System.out.println("Please, enter the resolution of the game:\n1. SD(640,480)\n2. QHD1(960,540)\n3. HD(1280,720)\n4. FHD(1920,1080)\n5. QHD2(2560,1440)\n6. UHD(3840,2160)");
             resolution = sc.nextInt();
-
+            sc.nextLine();
             if(resolution < 1 || resolution > 6){
                 System.out.println("The resolution is not valid, please try again.");
             }
@@ -139,6 +139,7 @@ public class VideoGameApp {
         do{
             System.out.println("1.Ogre\n2.Abstract\n3.Boss\n4.boss");
             type = sc.nextInt();
+            sc.nextLine();
             if (type<1 || type>4){
                 System.out.println("Please enter a valid number");
             }
@@ -174,6 +175,7 @@ public class VideoGameApp {
         int amount;
         do{
             amount = sc.nextInt();
+            sc.nextLine();
             if (amount<1){
                 System.out.println("Please enter a valid number");
             }
@@ -253,6 +255,7 @@ public class VideoGameApp {
         do {
             System.out.println("1.Ogre\n2.Abstract\n3.Boss\n4.boss");
             type = sc.nextInt();
+            sc.nextLine();
             if (type < 1 || type > 4) {
                 System.out.println("Please enter a valid number");
             }
